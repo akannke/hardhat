@@ -1,6 +1,6 @@
 import * as t from "io-ts";
 
-import { nullable, optional } from "../../../../util/io-ts";
+import { nullable, optional, optionalOrNullable } from "../../../../util/io-ts";
 import { rpcAccessList } from "../access-list";
 import { rpcAddress, rpcData, rpcHash, rpcQuantity } from "../base-types";
 
@@ -26,7 +26,7 @@ export const rpcTransaction = t.type(
     // EIP-2929/2930 properties
     type: optional(rpcQuantity),
     chainId: optional(nullable(rpcQuantity)),
-    accessList: optional(rpcAccessList),
+    accessList: optionalOrNullable(rpcAccessList),
 
     // EIP-1559 properties
     maxFeePerGas: optional(rpcQuantity),
